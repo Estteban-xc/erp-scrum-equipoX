@@ -1,0 +1,17 @@
+@startuml
+left to right direction
+
+actor "Jefe de Almacén" as Jefe 
+actor "Operario" as Operario
+
+rectangle "Sistema ERP" {
+  rectangle "Módulo Inventario" as Inventario
+}
+
+database "Base de Datos ERP" as DB
+
+Jefe --> Inventario
+Operario --> Inventario
+Inventario --> DB
+
+@enduml
