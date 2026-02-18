@@ -1,0 +1,17 @@
+@startuml
+title INV-04 - Consultar Inventario
+
+actor Jefe
+
+boundary "UI Inventario" as UI
+control "ProductoController" as Controller
+database "Base de Datos" as DB
+
+Jefe -> UI : Solicitar listado
+UI -> Controller : GET /productos
+Controller -> DB : SELECT * FROM productos
+DB --> Controller : Lista productos
+Controller --> UI : JSON productos
+UI --> Jefe : Mostrar inventario
+
+@enduml
