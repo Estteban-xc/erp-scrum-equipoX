@@ -1,20 +1,30 @@
 @startuml
-title INV-01 - Registrar Producto
+title INV-02 - Registrar Movimiento
 
-actor Usuario
+actor Operario
 
 boundary "UI Inventario" as UI
-control "ProductoController" as Controller
+control "MovimientoController" as Controller
 entity "Producto" as Producto
+entity "Movimiento" as Movimiento
 database "Base de Datos" as DB
 
-Usuario -> UI : Ingresa datos del producto
-UI -> Controller : POST /productos
-Controller -> Producto : validarDatos()
-Producto --> Controller : datos válidos
-Controller -> DB : INSERT producto
-DB --> Controller : OK
-Controller --> UI : 201 Created
-UI --> Usuario : Producto registrado
+Operario -> UI : Registrar entrada/salida
+UI -> Controller : POST /movimientos
+Controller -> Producto : consultarStock()
+Producto -> DB : SELECT stock
+DB --> Producto : stock actual
+
+alt Stock suficiente
+    Controller -> Movimiento : crearMovimiento()
+    Movimiento -> DB : INSERT movimiento
+    Controller -> Producto : actualizarStock()
+    Producto -> DB : UPDATE stock
+    Controller --> UI : 200 OK
+else Stock insuficiente
+    Controller --> UI : Error 400
+end
+
+UI --> Operario : Resultado operación
 
 @enduml
