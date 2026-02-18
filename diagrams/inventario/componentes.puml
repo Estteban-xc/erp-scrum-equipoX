@@ -1,0 +1,26 @@
+@startuml
+
+actor Usuario
+
+package "Frontend" {
+  component "UI Web Inventario"
+}
+
+package "Backend" {
+  component "API Inventario"
+  component "Servicio Productos"
+  component "Servicio Movimientos"
+}
+
+database "Base de Datos ERP"
+
+Usuario --> "UI Web Inventario"
+"UI Web Inventario" --> "API Inventario"
+
+"API Inventario" --> "Servicio Productos"
+"API Inventario" --> "Servicio Movimientos"
+
+"Servicio Productos" --> "Base de Datos ERP"
+"Servicio Movimientos" --> "Base de Datos ERP"
+
+@enduml
