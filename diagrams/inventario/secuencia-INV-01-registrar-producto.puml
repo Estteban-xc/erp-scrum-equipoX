@@ -1,0 +1,20 @@
+@startuml
+title INV-01 - Registrar Producto
+
+actor Usuario
+
+boundary "UI Inventario" as UI
+control "ProductoController" as Controller
+entity "Producto" as Producto
+database "Base de Datos" as DB
+
+Usuario -> UI : Ingresa datos del producto
+UI -> Controller : POST /productos
+Controller -> Producto : validarDatos()
+Producto --> Controller : datos válidos
+Controller -> DB : INSERT producto
+DB --> Controller : OK
+Controller --> UI : 201 Created
+UI --> Usuario : Producto registrado
+
+@enduml
