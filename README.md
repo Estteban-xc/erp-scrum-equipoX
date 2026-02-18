@@ -1,8 +1,7 @@
 # ERP Académico Scrum
 
-Proyecto académico ERP con módulos:
+Proyecto académico ERP con módulo:
 - Inventario
-- CRM
 
 Metodología: Scrum
 Herramientas:
