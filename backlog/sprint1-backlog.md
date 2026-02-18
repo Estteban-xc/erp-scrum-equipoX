@@ -70,6 +70,8 @@ Tareas técnicas:
 - Mostrar stock actual
 - Crear prueba funcional básica
 
+Actualización inicial 2 del Sprint 1.
+
 ---
 
 ## Total estimado del Sprint
