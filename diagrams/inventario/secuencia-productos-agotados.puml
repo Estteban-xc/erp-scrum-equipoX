@@ -1,0 +1,22 @@
+@startuml
+title Secuencia – Visualizar Productos Agotados (INV-06)
+
+actor "Jefe de Almacén" as Usuario
+participant "UI" as UI
+participant "API" as API
+participant "Servicio Inventario" as Servicio
+participant "Repositorio Producto" as Repo
+database "Base de Datos" as DB
+
+Usuario -> UI : Solicita ver productos agotados
+UI -> API : GET /productos-agotados
+API -> Servicio : obtenerProductosAgotados()
+Servicio -> Repo : filtrarStockCero()
+Repo -> DB : SELECT * FROM productos WHERE stock = 0
+DB --> Repo : Lista productos agotados
+Repo --> Servicio : Lista filtrada
+Servicio --> API : Productos agotados
+API --> UI : Datos filtrados
+UI --> Usuario : Mostrar lista
+
+@enduml
