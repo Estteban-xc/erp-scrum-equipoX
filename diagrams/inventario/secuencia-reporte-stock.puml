@@ -1,1 +1,23 @@
+@startuml
+title Secuencia – Generar Reporte de Stock (INV-05)
+
+actor "Jefe de Almacén" as Usuario
+participant "UI" as UI
+participant "API" as API
+participant "Servicio Inventario" as Servicio
+participant "Repositorio Producto" as Repo
+database "Base de Datos" as DB
+
+Usuario -> UI : Solicita generar reporte
+UI -> API : GET /reporte-stock
+API -> Servicio : obtenerReporteStock()
+Servicio -> Repo : obtenerTodosProductos()
+Repo -> DB : SELECT * FROM productos
+DB --> Repo : Lista de productos
+Repo --> Servicio : Lista de productos
+Servicio --> API : Reporte consolidado
+API --> UI : Datos del reporte
+UI --> Usuario : Mostrar reporte
+
+@enduml
 
