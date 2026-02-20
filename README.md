@@ -3,6 +3,7 @@
 Proyecto académico ERP con módulo:
 - Inventario
 - CRM
+
 Metodología: Scrum
 Herramientas:
 - Jira
