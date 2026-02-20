@@ -1,1 +1,18 @@
+@startuml
+actor Usuario
 
+participant "UI Web CRM" as UI
+participant "API CRM" as API
+participant "Servicio Clientes" as SC
+database "Base de Datos ERP" as DB
+
+Usuario -> UI : Ingresa datos del cliente
+UI -> API : POST /clientes
+API -> SC : Validar y procesar datos
+SC -> DB : Guardar cliente
+DB --> SC : Confirmación
+SC --> API : Cliente registrado
+API --> UI : Respuesta OK
+UI --> Usuario : Mostrar confirmación
+
+@enduml
