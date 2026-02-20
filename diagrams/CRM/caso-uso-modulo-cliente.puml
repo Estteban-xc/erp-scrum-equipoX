@@ -1,0 +1,29 @@
+@startuml
+left to right direction
+
+actor "Ejecutivo de Ventas" as EV
+actor "Agente de Servicio" as AS
+actor "Administrador" as ADM
+
+rectangle "Módulo Clientes / CRM" {
+
+  usecase "Registrar cliente" as UC1
+  usecase "Consultar clientes" as UC2
+  usecase "Editar cliente" as UC3
+  usecase "Consultar historial" as UC4
+  usecase "Registrar interacción" as UC5
+  usecase "Generar reportes" as UC6
+  usecase "Gestionar clientes" as UC7
+}
+
+EV --> UC1
+EV --> UC2
+EV --> UC3
+
+AS --> UC4
+AS --> UC5
+
+ADM --> UC6
+ADM --> UC7
+
+@enduml
