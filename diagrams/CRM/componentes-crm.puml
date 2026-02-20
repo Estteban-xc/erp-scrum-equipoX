@@ -1,1 +1,26 @@
+@startuml
+top to bottom direction
+skinparam componentStyle rectangle
 
+actor Usuario
+
+rectangle "Frontend" {
+  component "UI Web Clientes / CRM" as UI
+}
+
+rectangle "Backend" {
+  component "API Clientes / CRM" as API
+  component "Servicio Clientes" as SC
+  component "Servicio Interacciones" as SI
+}
+
+database "Base de Datos ERP" as DB
+
+Usuario --> UI
+UI --> API
+API --> SC
+API --> SI
+SC --> DB
+SI --> DB
+
+@enduml
