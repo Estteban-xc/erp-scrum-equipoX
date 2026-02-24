@@ -17,4 +17,3 @@
 - Crear Pull Requests antes de integrar a dev.
 - Registrar Daily Scrum.
 - Mantener trazabilidad historia → commit → PR.
-

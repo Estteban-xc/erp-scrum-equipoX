@@ -77,4 +77,3 @@ Actualización inicial 2 del Sprint 1.
 ## Total estimado del Sprint
 
 Total Story Points comprometidos: 11 SP
-
