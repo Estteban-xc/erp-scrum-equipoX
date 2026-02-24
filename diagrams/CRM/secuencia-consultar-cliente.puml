@@ -1,0 +1,18 @@
+@startuml
+actor Usuario
+
+participant "UI Web CRM" as UI
+participant "API CRM" as API
+participant "Servicio Clientes" as Servicio
+database "Base de Datos ERP" as DB
+
+Usuario -> UI : Solicita lista de clientes
+UI -> API : GET /clientes
+API -> Servicio : Obtener clientes
+Servicio -> DB : Consultar datos
+DB --> Servicio : Lista de clientes
+Servicio --> API : Datos obtenidos
+API --> UI : Respuesta OK
+UI --> Usuario : Mostrar lista
+
+@enduml
